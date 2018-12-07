@@ -113,24 +113,15 @@ OK</i>
 <h2>4. Gerando os dados para o treinamento</h2>
 <h3>4.1 Organizando as pastas</h3>
 A partir de agora vamos considerar a pasta <i>venv/models/research/object_detection</i> como a nossa pasta raíz. Para facilitar o manuseio dos arquivos, sugiro criar algumas pastas dentro da mesma. São elas:
-<code>
- 
-images: local para salvar as imagens de treino e teste; 
- 
-inference_graph: onde ficará o grafo de inferência, após o modelo ser treinado;
 
-training: pasta onde o TensorFlow salvará todos os dados relacionados ao treinamento da rede.
-
-</code>
+<b>images</b>: local para salvar as imagens de treino e teste;<br>
+<b>inference_graph</b>: onde ficará o grafo de inferência, após o modelo ser treinado;<br>
+<b>training</b>: pasta onde o TensorFlow salvará todos os dados relacionados ao treinamento da rede.<br>
 
 <h3> 4.2 Marcando as imagens e criando amostras para treinamento</h3>
-Para a marcação das imagens, eu utilizo o <i>software</i> <a href="https://github.com/tzutalin/labelImg">LabelImg</a>. Como saída para cada imagem, o programa gera um XML contendo as informações dos <i>bounding boxes</i> criados. Antes de gerarmos os TFRecords (arquivo utilizado como entrada da rede), é necessário converter estes XMLs para CSVs. Para isso, crie uma pasta chamada "train" e cole todas as imagens de treino, assim como os seus respectivos XMLs, dentro deste. Para o teste, crie uma pasta chamada "test" e faça o mesmo procedimento. Mova ambas pastas para a "images", previamente criada. Feito isso, utilize o arquivo "xml_to_csv.py" encontrado neste repositório, e na pasta <i>object_detection</i> execute o comando:
+Para a marcação das imagens, recomenda-se o <i>software</i> <a href="https://github.com/tzutalin/labelImg"> LabelImg</a>. Como saída para cada imagem, o programa gera um XML contendo as informações dos <i>bounding boxes</i> criados. Antes de gerarmos os TFRecords (arquivo utilizado como entrada da rede), é necessário converter estes XMLs para CSVs. Para isso, crie uma pasta chamada "train" e cole todas as imagens de treino, assim como os seus respectivos XMLs, dentro deste. Para o teste, crie uma pasta chamada "test" e faça o mesmo procedimento. Mova ambas pastas para a "images", previamente criada. Feito isso, utilize o arquivo "xml_to_csv.py" encontrado neste repositório, e na pasta <i>object_detection</i> execute o comando:
 
-<code>
- 
-(venv) $ python xml_to_csv.py
-
-</code>
+<code> (venv) $ python xml_to_csv.py <br>
 
 Se tudo acontecer de maneira correta, as mensagens abaixo devem aparecer:
 <br><br><i>Successfully converted xml to csv.<br>
@@ -139,9 +130,9 @@ Successfully converted xml to csv.</i>
 Este processo criará os arquivos "train_labels.csv" e "test_labels.csv" na pasta "images". Agora, dentro da pasta "training" é necessário criar um arquivo com o nome "label_map.pbtxt". Dentro deste deve conter apenas o seguinte conteúdo:
 
 <code>
-item {
-  id: 1
-  name: 'class'
+item { <br>
+  id: 1 <br>
+  name: 'class' <br>
 } <br>
 </code>
 
