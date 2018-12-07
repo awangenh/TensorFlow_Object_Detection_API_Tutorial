@@ -4,7 +4,7 @@ Data de criação: 09/10/2018
 <br>Versão do SO: Ubuntu 16.04.5 LTS
 <br> Versão do TensorFlow: 1.11.0
 
-Este tutorial tem como objetivos de mostrar como configurar o <i>TensorFlow Object Detection API</i> para utilizá-lo com um <i>dataset</i> próprio, em sistemas operacionais baseados em Ubuntu. Caso você use Windows, dê uma olhada no excelente <a href="https://github.com/EdjeElectronics/TensorFlow-Object-Detection-API-Tutorial-Train-Multiple-Objects-Windows-10"> tutorial </a> criado por <a href="https://github.com/EdjeElectronics"> EdjeElectronics </a>, no qual este tutorial foi baseado. Ainda, os scripts disponibilizados aqui foram encontrados no tutorial citado anteriormente, com algumas pequenas mudanças para executar da maneira correta no Linux.
+Este tutorial tem como objetivo mostrar como configurar o <i>TensorFlow Object Detection API</i> para utilizá-lo com um <i>dataset</i> próprio, em sistemas operacionais baseados em Ubuntu. Caso você use Windows, dê uma olhada no excelente <a href="https://github.com/EdjeElectronics/TensorFlow-Object-Detection-API-Tutorial-Train-Multiple-Objects-Windows-10"> tutorial </a> criado por <a href="https://github.com/EdjeElectronics"> EdjeElectronics</a>, no qual este tutorial foi baseado. Ainda, os <i>scripts</i> disponibilizados aqui foram encontrados no tutorial citado anteriormente, com algumas pequenas mudanças para executar da maneira correta no Linux.
 
 <h2>1. Criando um Ambiente Virtual</h2>
 Para evitar qualquer problema de incompatibilidade com os pacotes globalmente instalados, será criado um ambiente virtual para isolar a instalação da API dos restante dos pacotes instalados no sistema operacional. Inicialmente, podemos verificar se existe os seguintes componentes estão instalados:
