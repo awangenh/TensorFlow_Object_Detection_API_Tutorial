@@ -85,17 +85,27 @@ Agora que os arquivos foram extraídos, ainda dentro de <i>venv/models/research<
 
 <h4>3.1.3 Adicionando a API ao <i>path</i> do sistema</h4>
 Para que o Python encontre os arquivos da API, é necessário adicioná-los ao <i>path</i> do sistema. No terminal, digite:
+
 <br><code>vim ~/.bashrc</code>
+
 Caso não queira utilizar o <i>vim</i>, outros editores de texto como o <i>nano</i> podem ser utilizados. No fim do arquivo, o seguinte comando deve ser utilizado:
+
 <br><code>export PYTHONPATH=$PYTHONPATH:'pwd'/models/research/:'pwd'/models/research/slim</code>
+
 O comando 'pwd' deve ser substituído pelo caminho até a pasta da API. Então, um exemplo de utilização seria:
+
 <br><code>export PYTHONPATH=$PYTHONPATH:/home/user/od_api/models/research/:/home/user/od_api/models/research/slim</code>
+
 Inserido o comando, pode-se salvar e fechar o arquivo. Para que o sistema seja atualizado e detecte a API, digite o seguinte comando no terminal: 
+
 <br><code>source ~/.bashrc</code>
+
 Para testar a instalação da API, dentro da pasta <i>venv/models/research</i> digite:
+
 <br><code>(venv) $ python object_detection/builders/model_builder_test.py</code>
+
 Uma mensagem como a abaixo deve aparecer se tudo estiver instalado da maneira correta:
-<br><i>
-Ran 21 tests in 0.178s <br>
+
+<br><i>Ran 21 tests in 0.178s <br>
 
 OK</i>
