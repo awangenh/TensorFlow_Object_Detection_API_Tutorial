@@ -4,7 +4,7 @@ Data de criação: 09/10/2018
 <br>Versão do SO: Ubuntu 16.04.5 LTS
 <br> Versão do TensorFlow: 1.11.0
 
-Este tutorial tem como objetivos de mostrar como configurar o <i>TensorFlow Object Detection API</i> para utilizá-lo com um <i>dataset</i> próprio.
+Este tutorial tem como objetivos de mostrar como configurar o <i>TensorFlow Object Detection API</i> para utilizá-lo com um <i>dataset</i> próprio, em sistemas operacionais baseados em Ubuntu. Caso você use Windows, dê uma olhada no excelente <a href="https://github.com/EdjeElectronics/TensorFlow-Object-Detection-API-Tutorial-Train-Multiple-Objects-Windows-10"> tutorial </a> criado por <a href="https://github.com/EdjeElectronics"> EdjeElectronics </a>, no qual este tutorial foi baseado. Ainda, os scripts disponibilizados aqui foram encontrados no tutorial citado anteriormente, com algumas pequenas mudanças para executar da maneira correta no Linux.
 
 <h2>1. Criando um Ambiente Virtual</h2>
 Para evitar qualquer problema de incompatibilidade com os pacotes globalmente instalados, será criado um ambiente virtual para isolar a instalação da API dos restante dos pacotes instalados no sistema operacional. Inicialmente, podemos verificar se existe os seguintes componentes estão instalados:
@@ -178,7 +178,7 @@ def class_text_to_int(row_label):
 
 <h3> 4.3 Ajustando os arquivos necessários </h3>
 O processo de treinamento será iniciado utilizando os pesos de modelos previamente treinados e fornecidos pela própria Google. Para isso, é necessário entrar no <a href="https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md">Model Zoo</a> e baixar o modelo <i>faster_rcnn_resnet101_coco</i> (ou baixá-lo diretamente por este <a href="http://download.tensorflow.org/models/object_detection/faster_rcnn_resnet101_coco_2018_01_28.tar.gz">link</a>). Feito isso, descompacte o arquivo baixado e mova a pasta <i>faster_rcnn_resnet101_coco_2018_01_28</i> para a pasta raíz (<i>object_detection</i>).
-
+<br>
 Agora, a partir da pasta raíz é necessário navegar até <i>samples/configs</i> e copiar o arquivo <i>faster_rcnn_inception_v2_coco.config</i> (modelo de rede utilizada) para dentro da pasta "object_detection/training". Dentro do arquivo será necessário editar algumas linhas. Altere os valores como no exemplo abaixo:
 
 <span>&#8226;</span> Linha 10 (Quantidade de classes) -> <i>num_classes: 1</i><br>
@@ -194,3 +194,34 @@ Agora, a partir da pasta raíz é necessário navegar até <i>samples/configs</i
 Feitas as alterações, basta salvar e fechar o arquivo.
 
 <h3> 4.4 Treinando a rede </h3>
+Com todos os arquivos devidamente ajustados, o próximo passo é treinar a rede neural. Para isso, execute o seguinte comando:
+<code>(venv) $ python legacy/train.py --logtostderr --train_dir=training/ --pipeline_config_path=training/faster_rcnn_resnet101_coco.config</code>
+
+Se tudo foi configurado da maneira correta, a rede deve iniciar seu treinamento. É importante salientar que pode demorar alguns segundos (ou minutos, dependendo da configuração do computador) para que a rede comece efetivamente a treinar. É importante salientar que a rede cria <i>checkpoints</i> de tempos em tempos, salvando-os dentro da pasta "training". Então o treinamento pode ser interrompido a qualquer momento pressionando "Crtl + C", ou o processo é finalizado automaticamente quando a quantidade de <i>steps</i> definida anteriormente é atingida.
+
+Caso você queira acompanhar o andamento do treinamento utilizando o <i>Tensorboard</i>, digite o seguinte comando (em outro terminal):
+
+<code>(venv) $ tensorboard --logdir=training</code>
+
+A aplicação criará uma página web que pode ser acessada pelo endereço indicado pela mesma. Então basta abrir o navegador e entrar com o endereço indicado pelo Tensorboard. Geralmente este possui o seguinte formato: http://NomeDoPC:6006
+
+<h3> 4.5 Exportando o grafo de inferência </h3>
+O grafo de inferência é gerado após o treinamento da rede neural. Este é utilizado para fazer as predições com o modelo devidamente treinado. Para exportá-lo, use o seguinte comando:
+
+<code>python export_inference_graph.py --input_type image_tensor --pipeline_config_path training/faster_rcnn_resnet101_coco.config --trained_checkpoint_prefix training/model.ckpt-XXXX --output_directory inference_graph</code>
+
+É importante ressaltar que o "XXXX" deve ser substituído pelo número de <i>steps</i> em que foi salvo determinado <i>checkpoint</i>. Ou seja, dentro da pasta "training" provavelmente existirão alguns arquivos ".ckpt". O determinado trecho pode ser substituído por algum destes números, geralmente escolhendo-se o mais alto. Segue um exemplo:
+
+<code>python export_inference_graph.py --input_type image_tensor --pipeline_config_path training/faster_rcnn_resnet101_coco.config --trained_checkpoint_prefix training/model.ckpt-50000 --output_directory inference_graph</code>
+
+Caso a rede tenha treinado pelos 50000 <i>steps</i> determinados anteriormente.
+
+<h3> 4.6 Fazendo predições com o modelo treinado </h3>
+Para fazer predições utilizando o modelo treinado, pode-se utilizar o script "Object_detection_image.py". Antes, é necessário alterar algumas linhas. São elas:
+
+<span>&#8226;</span> Linha 34 (Local/Nome da imagem) -> <i>IMAGE_NAME = 'images/test/test1.jpg'</i><br>
+<span>&#8226;</span> Linha 50 (Quantidade de classes) -> <i>NUM_CLASSES = 1</i><br>
+
+É importante salientar que o script deve ser executado com o ambiente virtual ativado. Ou seja:
+
+<code>(venv) $ python Object_detection_image.py</code>
