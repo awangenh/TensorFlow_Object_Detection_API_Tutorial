@@ -1,13 +1,12 @@
 <h1> Tutorial - TensorFlow Object Detection API Tutorial (Ubuntu e derivados) </h1>
 
-Data de criação: 09/10/2018
 <br>Versão do SO: Ubuntu 16.04.5 LTS
 <br> Versão do TensorFlow: 1.11.0
 
-Este tutorial tem como objetivo mostrar como configurar o <i>TensorFlow Object Detection API</i> para utilizá-lo com um <i>dataset</i> próprio, em sistemas operacionais baseados em Ubuntu. Caso você use Windows, dê uma olhada no excelente <a href="https://github.com/EdjeElectronics/TensorFlow-Object-Detection-API-Tutorial-Train-Multiple-Objects-Windows-10"> tutorial </a> criado por <a href="https://github.com/EdjeElectronics"> EdjeElectronics</a>, no qual este tutorial foi baseado. Ainda, os <i>scripts</i> disponibilizados aqui foram encontrados no tutorial citado anteriormente, com algumas pequenas mudanças para executar da maneira correta no Linux.
+Este tutorial tem como objetivo mostrar como configurar o <i>TensorFlow Object Detection API</i> para utilizá-lo com um <i>dataset</i> próprio, em sistemas operacionais baseados em Ubuntu. Caso você use Windows, dê uma olhada no excelente <a href="https://github.com/EdjeElectronics/TensorFlow-Object-Detection-API-Tutorial-Train-Multiple-Objects-Windows-10"> tutorial </a> criado por <a href="https://github.com/EdjeElectronics"> EdjeElectronics</a>, no qual este tutorial foi baseado. Ainda, os <i>scripts</i> disponibilizados aqui foram retirados do tutorial citado anteriormente, com algumas pequenas mudanças para executar da maneira correta no Linux.
 
 <h2>1. Criando um Ambiente Virtual</h2>
-Para evitar qualquer problema de incompatibilidade com os pacotes globalmente instalados, será criado um ambiente virtual para isolar a instalação da API dos restante dos pacotes instalados no sistema operacional. Inicialmente, podemos verificar se existe os seguintes componentes estão instalados:
+Para evitar qualquer problema de incompatibilidade com os pacotes globalmente instalados, será criado um ambiente virtual. Assim é possível isolar a instalação da API do restante dos pacotes instalados no sistema operacional. Inicialmente, podemos verificar se os seguintes componentes estão instalados:
 
 <code>$ python3 --version</code><br>
 <code>$ pip3 --version</code><br>
@@ -19,7 +18,7 @@ Caso todos estes pacotes já estejam instalados, pule o próximo passo:
 <code>$ sudo apt install python3-dev python3-pip</code><br>
 <code>$ sudo pip3 install -U virtualenv</code><br>
 
-Agora, crie uma pasta no local desejado (pode ser na Home). O ambiente virtual estará contido dentro da mesma. Por exemplo:<br>
+Agora, crie uma pasta no local desejado. O ambiente virtual estará contido dentro da mesma. Por exemplo:<br>
 <code>$ mkdir venv </code><br>
 
 O comando anterior cria uma pasta chamada de <i>venv</i>. Agora, execute o seguinte comando para criar o ambiente virtual:
@@ -27,7 +26,7 @@ O comando anterior cria uma pasta chamada de <i>venv</i>. Agora, execute o segui
 
 Caso seja necessário, troque a palavra <i>venv</i> pelo nome da pasta que você criou.
 
-Assim o seu ambiente virtual está criado. Para ativá-lo, digite o seguinte comando: <br>
+O seu ambiente virtual está criado. Para ativá-lo, digite o seguinte comando: <br>
 <code>$ source venv/bin/activate </code><br>
 
 Se tudo ocorrer conforme o esperado, o nome do seu ambiente virtual aparecerá, entre parênteses, no seu terminal.
