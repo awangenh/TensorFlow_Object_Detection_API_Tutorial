@@ -8,7 +8,7 @@ Este tutorial tem como objetivo mostrar como configurar o <i>TensorFlow Object D
 <h2>1. Criando um Ambiente Virtual</h2>
 Para evitar qualquer problema de incompatibilidade com os pacotes globalmente instalados, será criado um ambiente virtual. Assim é possível isolar a instalação da API do restante dos pacotes instalados no sistema operacional. Inicialmente, podemos verificar se os seguintes componentes estão instalados:
 
-<code>$ python3 --version</code><br>
+<br><code>$ python3 --version</code><br>
 <code>$ pip3 --version</code><br>
 <code>$ virtualenv --version</code><br>
 
@@ -18,7 +18,8 @@ Caso todos estes pacotes já estejam instalados, pule o próximo passo:
 <code>$ sudo apt install python3-dev python3-pip</code><br>
 <code>$ sudo pip3 install -U virtualenv</code><br>
 
-Agora, crie uma pasta no local desejado. O ambiente virtual estará contido dentro da mesma. Por exemplo:<br>
+Agora, crie uma pasta no local desejado. O ambiente virtual estará contido dentro da mesma. Por exemplo:
+
 <code>$ mkdir venv </code><br>
 
 O comando anterior cria uma pasta chamada de <i>venv</i>. Agora, execute o seguinte comando para criar o ambiente virtual:
@@ -27,16 +28,20 @@ O comando anterior cria uma pasta chamada de <i>venv</i>. Agora, execute o segui
 Caso seja necessário, troque a palavra <i>venv</i> pelo nome da pasta que você criou.
 
 O seu ambiente virtual está criado. Para ativá-lo, digite o seguinte comando: <br>
+
 <code>$ source venv/bin/activate </code><br>
 
-Se tudo ocorrer conforme o esperado, o nome do seu ambiente virtual aparecerá, entre parênteses, no seu terminal.
-<code>(venv) $ </code><br>
+Se tudo ocorrer conforme esperado, o nome do seu ambiente virtual aparecerá, entre parênteses, no seu terminal.
 
-Para desativá-lo, digite o seguinte comando: <br>
+<code>(venv) $ </code>
+
+Para desativá-lo, digite o seguinte comando: 
+
 <code>(venv) $ deactivate</code>
 
 <h2>2. Instalando o TensorFlow</h2>
 Dentro do ambiente virtual, digite os seguinte comandos:
+
 <code>(venv) $ pip install --upgrade pip</code><br>
 <code>(venv) $ pip list</code><br>
 
