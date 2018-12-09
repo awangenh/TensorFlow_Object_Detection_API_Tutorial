@@ -11,7 +11,7 @@ Para evitar qualquer problema de incompatibilidade com os pacotes globalmente in
 <code>$ pip3 --version</code>
 <code>$ virtualenv --version</code><br>
 
-Caso todos estes pacotes já estejam instalados, pule o próximo passo:
+<br>Caso todos estes pacotes já estejam instalados, pule o próximo passo:
 <br><code>$ sudo apt update</code><br>
 <code>$ sudo apt install python3-dev python3-pip</code><br>
 <code>$ sudo pip3 install -U virtualenv</code><br>
@@ -50,15 +50,15 @@ Para checar se a instalação está funcionando corretamente:
 <br><code>(venv) $ python -c "import tensorflow as tf; print(tf.\_\_version\_\_)"</code>
 
 <h2>3. Baixando e instalando o TensorFlow Object Detection API</h2>
-Inicialmente, é necessário baixar os arquivos para posterior instalação da API. Para isso, acesse o link: https://github.com/tensorflow/models. Para este tutorial, foi utilizado <a href="https://github.com/tensorflow/models/tree/42f98218d7b0ee54077d4e07658442bc7ae0e661">este</a> commit. Faça o download do repositório clicando no botão verde, no canto superior direito (<i>Clone or Download</i>). Após o arquivo ter sido baixado, extraia e renomeie a pasta "models-master" para "models". No terminal: 
-<code>mv models-master models</code><br>
+Inicialmente, é necessário baixar os arquivos para posterior instalação da API. Para isso, acesse o link: https://github.com/tensorflow/models. Para este tutorial, foi utilizado <a href="https://github.com/tensorflow/models/tree/42f98218d7b0ee54077d4e07658442bc7ae0e661">este</a> commit. Faça o download do repositório clicando no botão verde, no canto superior direito (<i>Clone or Download</i>). Após o arquivo ter sido baixado, extraia e renomeie a pasta "models-master" para "models". No terminal: <code>mv models-master models</code>
  
-Agora, é necessário mover a pasta <i>models</i> para dentro da pasta <i>venv</i>. Você pode simplesmente copiar e colar ou utilizar o terminal:
+<br>Agora, é necessário mover a pasta <i>models</i> para dentro da pasta <i>venv</i>. Você pode simplesmente copiar e colar ou utilizar o terminal:
 <code>mv master <b>/home/user/venv</b></code> (Substituir o caminho em negrito pelo caminho em seu computador.)<br>
 
 <h3>3.1 Instalando a API</h3>
 
 Inicialmente, é necessário instalar as dependências necessárias para o funcionamento da API. Para isto, digite:
+
 <br><code>(venv) $ pip install --user Cython</code>
 <code>(venv) $ pip install --user contextlib2</code>
 <code>(venv) $ pip install --user pillow</code>
