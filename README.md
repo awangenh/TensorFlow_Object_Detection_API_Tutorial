@@ -7,37 +7,31 @@ Este tutorial tem como objetivo mostrar como configurar o <i>TensorFlow Object D
 
 <h2>1. Criando um Ambiente Virtual</h2>
 Para evitar qualquer problema de incompatibilidade com os pacotes globalmente instalados, será criado um ambiente virtual. Assim é possível isolar a instalação da API do restante dos pacotes instalados no sistema operacional. Inicialmente, podemos verificar se os seguintes componentes estão instalados:
-
-<br><code>$ python3 --version</code><br>
-<code>$ pip3 --version</code><br>
+<br><code>$ python3 --version</code>
+<code>$ pip3 --version</code>
 <code>$ virtualenv --version</code><br>
 
 Caso todos estes pacotes já estejam instalados, pule o próximo passo:
-
-<code>$ sudo apt update</code><br>
+<br><code>$ sudo apt update</code><br>
 <code>$ sudo apt install python3-dev python3-pip</code><br>
 <code>$ sudo pip3 install -U virtualenv</code><br>
 
 Agora, crie uma pasta no local desejado. O ambiente virtual estará contido dentro da mesma. Por exemplo:
-
-<code>$ mkdir venv </code><br>
+<br><code>$ mkdir venv </code><br>
 
 O comando anterior cria uma pasta chamada de <i>venv</i>. Agora, execute o seguinte comando para criar o ambiente virtual:
 <br><code>$ virtualenv --system-site-packages -p python3 <b>venv</b></code><br> 
 
 Caso seja necessário, troque a palavra <i>venv</i> pelo nome da pasta que você criou.
 
-O seu ambiente virtual está criado. Para ativá-lo, digite o seguinte comando: <br>
-
-<code>$ source venv/bin/activate </code><br>
+O seu ambiente virtual está criado. Para ativá-lo, digite o seguinte comando: 
+<br><code>$ source venv/bin/activate </code><br>
 
 Se tudo ocorrer conforme esperado, o nome do seu ambiente virtual aparecerá, entre parênteses, no seu terminal.
-
-<code>(venv) $ </code>
+<br><code>(venv) $ </code>
 
 Para desativá-lo, digite o seguinte comando: 
-
-<code>(venv) $ deactivate</code>
+<br><code>(venv) $ deactivate</code>
 
 <h2>2. Instalando o TensorFlow</h2>
 Dentro do ambiente virtual, digite os seguinte comandos:
@@ -53,8 +47,7 @@ TensorFlow CPU: <code>(venv) $ pip install --upgrade tensorflow</code><br>
 TensorFlow GPU: <code>(venv) $ pip install --upgrade tensorflow-gpu</code><br>
 
 Para checar se a instalação está funcionando corretamente:
-
-<code>(venv) $ python -c "import tensorflow as tf; print(tf.\_\_version\_\_)"</code>
+<br><code>(venv) $ python -c "import tensorflow as tf; print(tf.\_\_version\_\_)"</code>
 
 <h2>3. Baixando e instalando o TensorFlow Object Detection API</h2>
 Inicialmente, é necessário baixar os arquivos para posterior instalação da API. Para isso, acesse o link: https://github.com/tensorflow/models. Para este tutorial, foi utilizado <a href="https://github.com/tensorflow/models/tree/42f98218d7b0ee54077d4e07658442bc7ae0e661">este</a> commit. Faça o download do repositório clicando no botão verde, no canto superior direito (<i>Clone or Download</i>). Após o arquivo ter sido baixado, extraia e renomeie a pasta "models-master" para "models". No terminal: 
@@ -66,18 +59,18 @@ Agora, é necessário mover a pasta <i>models</i> para dentro da pasta <i>venv</
 <h3>3.1 Instalando a API</h3>
 
 Inicialmente, é necessário instalar as dependências necessárias para o funcionamento da API. Para isto, digite:
-<br><code>(venv) $ pip install --user Cython</code><br>
-<code>(venv) $ pip install --user contextlib2</code><br>
-<code>(venv) $ pip install --user pillow</code><br>
-<code>(venv) $ pip install --user lxml</code><br>
+<br><code>(venv) $ pip install --user Cython</code>
+<code>(venv) $ pip install --user contextlib2</code>
+<code>(venv) $ pip install --user pillow</code>
+<code>(venv) $ pip install --user lxml</code>
 <code>(venv) $ pip install --user matplotlib</code><br>
 
 <h4>3.1.1 Instalando a COCO API</h4>
 Caso você esteja interessdo em utilizar as métricas COCO, é necessário instalar a sua API. Para isto, digite:
-<code>(venv) $ git clone https://github.com/cocodataset/cocoapi.git</code>
+<br><code>(venv) $ git clone https://github.com/cocodataset/cocoapi.git</code>
 <code>(venv) $ cd cocoapi/PythonAPI</code>
 <code>(venv) $ make</code>
-<code>(venv) $ cp -r pycocotools <path_to_tensorflow>/models/research/</code>
+<code>(venv) $ cp -r pycocotools <path_to_tensorflow>/models/research/</code><br>
   
 <h4>3.1.2 Instalando o protobuf-compiler</h4>
 Dentro da pasta <i>venv/models/research</i>, digite os seguintes comandos:  
