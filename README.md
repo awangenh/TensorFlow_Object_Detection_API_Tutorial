@@ -11,35 +11,35 @@ Para evitar qualquer problema de incompatibilidade com os pacotes globalmente in
 
 <code>$ python3 --version</code><br>
 <code>$ pip3 --version</code><br>
-<code>$ virtualenv --version</code><br>
+<code>$ virtualenv --version</code>
 
-<br>Caso todos estes pacotes já estejam instalados, pule o próximo passo:
+Caso todos estes pacotes já estejam instalados, pule o próximo passo:
 
 <br><code>$ sudo apt update</code><br>
 <code>$ sudo apt install python3-dev python3-pip</code><br>
-<code>$ sudo pip3 install -U virtualenv</code><br>
+<code>$ sudo pip3 install -U virtualenv</code>
 
 Agora, crie uma pasta no local desejado. O ambiente virtual estará contido dentro da mesma. Por exemplo:
 
-<br><code>$ mkdir venv </code><br>
+<code>$ mkdir venv </code><br>
 
 O comando anterior cria uma pasta chamada de <i>venv</i>. Agora, execute o seguinte comando para criar o ambiente virtual:
 
-<br><code>$ virtualenv --system-site-packages -p python3 <b>venv</b></code><br> 
+<code>$ virtualenv --system-site-packages -p python3 <b>venv</b></code><br> 
 
 Caso seja necessário, troque a palavra <i>venv</i> pelo nome da pasta que você criou.
 
 O seu ambiente virtual está criado. Para ativá-lo, digite o seguinte comando: 
 
-<br><code>$ source venv/bin/activate </code><br>
+<code>$ source venv/bin/activate </code><br>
 
 Se tudo ocorrer conforme esperado, o nome do seu ambiente virtual aparecerá, entre parênteses, no seu terminal.
 
-<br><code>(venv) $ </code>
+<code>(venv) $ </code>
 
 Para desativá-lo, digite o seguinte comando: 
 
-<br><code>(venv) $ deactivate</code>
+<code>(venv) $ deactivate</code>
 
 <h2>2. Instalando o TensorFlow</h2>
 
@@ -57,7 +57,7 @@ TensorFlow GPU: <code>(venv) $ pip install --upgrade tensorflow-gpu</code><br>
 
 Para checar se a instalação está funcionando corretamente:
 
-<br><code>(venv) $ python -c "import tensorflow as tf; print(tf.\_\_version\_\_)"</code>
+<code>(venv) $ python -c "import tensorflow as tf; print(tf.\_\_version\_\_)"</code>
 
 <h2>3. Baixando e instalando o TensorFlow Object Detection API</h2>
 Inicialmente, é necessário baixar os arquivos para posterior instalação da API. Para isso, acesse o link: https://github.com/tensorflow/models. Para este tutorial, foi utilizado <a href="https://github.com/tensorflow/models/tree/42f98218d7b0ee54077d4e07658442bc7ae0e661">este</a> commit. Faça o download do repositório clicando no botão verde, no canto superior direito (<i>Clone or Download</i>). Após o arquivo ter sido baixado, extraia e renomeie a pasta "models-master" para "models". No terminal: <code>mv models-master models</code>
@@ -68,7 +68,8 @@ Inicialmente, é necessário baixar os arquivos para posterior instalação da A
 <h3>3.1 Instalando a API</h3>
 
 Inicialmente, é necessário instalar as dependências necessárias para o funcionamento da API. Para isto, digite:
-<br><code>(venv) $ pip install --user Cython</code><br>
+
+<code>(venv) $ pip install --user Cython</code><br>
 <code>(venv) $ pip install --user contextlib2</code><br>
 <code>(venv) $ pip install --user pillow</code><br>
 <code>(venv) $ pip install --user lxml</code><br>
@@ -77,6 +78,7 @@ Inicialmente, é necessário instalar as dependências necessárias para o funci
 <h4>3.1.1 Instalando a COCO API</h4>
 
 Caso você esteja interessdo em utilizar as métricas COCO, é necessário instalar a sua API. Para isto, digite:
+
 <code>(venv) $ git clone https://github.com/cocodataset/cocoapi.git</code><br>
 <code>(venv) $ cd cocoapi/PythonAPI</code><br>
 <code>(venv) $ make</code><br>
@@ -85,11 +87,13 @@ Caso você esteja interessdo em utilizar as métricas COCO, é necessário insta
 <h4>3.1.2 Instalando o protobuf-compiler</h4>
 
 Dentro da pasta <i>venv/models/research</i>, digite os seguintes comandos:  
+
 <code>(venv) $ wget -O protobuf.zip https://github.com/google/protobuf/releases/download/v3.0.0/protoc-3.0.0-linux-x86_64.zip</code><br>
 <code>(venv) $ unzip protobuf.zip</code>
 
 Agora que os arquivos foram extraídos, ainda dentro de <i>venv/models/research</i>, digite o comando:
-<br><code>(venv) $ ./bin/protoc object_detection/protos/*.proto --python_out=.</code>
+
+<code>(venv) $ ./bin/protoc object_detection/protos/*.proto --python_out=.</code>
 
 <h4>3.1.3 Adicionando a API ao <i>path</i> do sistema</h4>
 
@@ -131,7 +135,7 @@ A partir de agora vamos considerar a pasta <i>venv/models/research/object_detect
 
 Para a marcação das imagens, recomenda-se o <i>software</i> <a href="https://github.com/tzutalin/labelImg"> LabelImg</a>. Como saída para cada imagem, o programa gera um XML contendo as informações dos <i>bounding boxes</i> criados. Antes de gerarmos os TFRecords (arquivo utilizado como entrada da rede), é necessário converter estes XMLs para CSVs. Para isso, crie uma pasta chamada "train" e cole todas as imagens de treino, assim como os seus respectivos XMLs, dentro deste. Para o teste, crie uma pasta chamada "test" e faça o mesmo procedimento. Mova ambas pastas para a "images", previamente criada. Feito isso, utilize o arquivo "xml_to_csv.py" encontrado neste repositório, e na pasta "object_detection" execute o comando:
 
-<br><code> (venv) $ python xml_to_csv.py </code> <br>
+<code> (venv) $ python xml_to_csv.py </code> <br>
 
 Se tudo acontecer de maneira correta, as mensagens abaixo devem aparecer:
 <br><br><i>Successfully converted xml to csv.<br>
