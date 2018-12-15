@@ -15,7 +15,7 @@ Para evitar qualquer problema de incompatibilidade com os pacotes globalmente in
 
 Caso todos estes pacotes já estejam instalados, pule o próximo passo:
 
-<br><code>$ sudo apt update</code><br>
+<code>$ sudo apt update</code><br>
 <code>$ sudo apt install python3-dev python3-pip</code><br>
 <code>$ sudo pip3 install -U virtualenv</code>
 
@@ -191,11 +191,12 @@ def class_text_to_int(row_label):
 É <b>necessário</b> que as classes estejam na mesma ordem e com o mesmo <i>id</i> que foram colocados no arquivo <i>label_map.pbtxt</i>.
 
 <h3> 4.3 Ajustando os arquivos necessários </h3>
+
 O processo de treinamento será iniciado utilizando os pesos de modelos previamente treinados e fornecidos pela própria Google. Para isso, é necessário entrar no <a href="https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md">Model Zoo</a> e baixar o modelo <i>faster_rcnn_resnet101_coco</i> (ou baixá-lo diretamente por este <a href="http://download.tensorflow.org/models/object_detection/faster_rcnn_resnet101_coco_2018_01_28.tar.gz">link</a>). Feito isso, descompacte o arquivo baixado e mova a pasta <i>faster_rcnn_resnet101_coco_2018_01_28</i> para a pasta raíz (<i>object_detection</i>).
-<br>
+
 Agora, a partir da pasta raíz é necessário navegar até <i>samples/configs</i> e copiar o arquivo <i>faster_rcnn_inception_v2_coco.config</i> (modelo de rede utilizada) para dentro da pasta "object_detection/training". Dentro do arquivo será necessário editar algumas linhas. Altere os valores como no exemplo abaixo:
 
-<br><span>&#8226;</span> Linha 10 (Quantidade de classes) -> <i>num_classes: 1</i><br>
+<span>&#8226;</span> Linha 10 (Quantidade de classes) -> <i>num_classes: 1</i><br>
 <span>&#8226;</span> Linha 13 (Dimensão mínima das imagens de entrada) -> <i>min_dimension: 512</i><br>
 <span>&#8226;</span> Linha 14 (Dimensão máxima das imagens de entrada) -> <i>max_dimension: 512</i><br>
 <span>&#8226;</span> Linha 107 (Local de onde serão carregados os pesos iniciais) -> <i>fine_tune_checkpoint: "faster_rcnn_inception_v2_coco_2018_01_28/model.ckpt"</i><br>
