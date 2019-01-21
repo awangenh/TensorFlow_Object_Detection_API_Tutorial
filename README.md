@@ -65,7 +65,7 @@ Se estiver corretamente instalado, a versão do pacote será impressa na tela.
 Inicialmente, é necessário baixar os arquivos para posterior instalação da API. Para isso, acesse o link: https://github.com/tensorflow/models. Para este tutorial, foi utilizado <a href="https://github.com/tensorflow/models/tree/42f98218d7b0ee54077d4e07658442bc7ae0e661">este</a> commit. Faça o download do repositório clicando no botão verde, no canto superior direito (<i>Clone or Download</i>). Após o arquivo ter sido baixado, extraia e renomeie a pasta "models-master" para "models". No terminal: <code>mv models-master models</code>
  
 <br>Agora, é necessário mover a pasta <i>models</i> para dentro da pasta <i>venv</i>. Você pode simplesmente copiar e colar ou utilizar o terminal:
-<code>mv master <b>/home/user/venv</b></code> (Substituir o caminho em negrito pelo caminho em seu computador.)<br>
+<code>mv models <b>/home/user/venv</b></code> (Substituir o caminho em negrito pelo caminho em seu computador.)<br>
 
 <h3>3.1 Instalando a API</h3>
 
